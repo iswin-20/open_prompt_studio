@@ -5,6 +5,7 @@
     "type": "module",
     "scripts": {
         "start": "npm-run-all --parallel dev serve",
+        "start:prod": "npm run build && npm run serve",
         "dev": "vite --host 0.0.0.0",
         "build": "vite build",
         "preview": "vite serve",

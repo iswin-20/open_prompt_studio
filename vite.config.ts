@@ -15,6 +15,9 @@ let config = {
     server: {
         port: 12833,
         host: "0.0.0.0",
+        proxy: {
+            "/api": "http://127.0.0.1:39011",
+        },
     },
     worker: {
         format: "es",

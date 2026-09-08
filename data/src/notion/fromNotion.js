@@ -1,21 +1,18 @@
 import { Client } from "@notionhq/client"
+import secret from "../../../secret.json" assert { type: "json" }
 import fs from "fs"
 
 const notion = new Client({
-    auth: process.env.NOTION_TOKEN,
+    auth: secret.notion,
 })
 
-let database_id = process.env.NOTION_DATABASE_ID
+// database https://www.notion.so/moonvy/5ac19c115d11488f95847c9e2d789dff?v=5ce9b783b4504c23bb7b492aa70c1cfc
+let database_id = `5ac19c115d11488f95847c9e2d789dff`
 const __dirname = new URL(".", import.meta.url).pathname
 
 // let items = await fromNotion()
 
 export async function fromNotion() {
-    if (!process.env.NOTION_TOKEN || !database_id) {
-        console.log("[notion] skipped: set NOTION_TOKEN and NOTION_DATABASE_ID to enable import.")
-        return {}
-    }
-
     let lines = {}
     const subTypeMap = {
         普通: "normal",
@@ -25,7 +22,7 @@ export async function fromNotion() {
         负面: "eg",
     }
 
-    console.log("[notion] importing configured database")
+    console.log("[notion] get notion database :https://www.notion.so/moonvy/5ac19c115d11488f95847c9e2d789dff")
     let i = 0
     await once()
     async function once(start_cursor) {

@@ -7,7 +7,7 @@ const __dirname = new URL(".", import.meta.url).pathname
 
 let localPromptDefineMap = {}
 
-// Optionally add a Notion database configured through environment variables.
+// Add notion database https://www.notion.so/moonvy/5ac19c115d11488f95847c9e2d789dff?v=5ce9b783b4504c23bb7b492aa70c1cfc
 let notionPromptDescMap = await fromNotion()
 Object.assign(localPromptDefineMap, notionPromptDescMap)
 
